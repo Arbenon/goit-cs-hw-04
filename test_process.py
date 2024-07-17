@@ -2,7 +2,7 @@ import multiprocessing
 import time
 from collections import defaultdict
 
-# Функція для пошуку ключових слів у файлі
+# Пошук ключових слів у файлі
 def search_keywords_in_file(file, keywords, queue):
     results = defaultdict(list)
     try:
@@ -20,7 +20,7 @@ def process_files(files, keywords, queue):
     for file in files:
         search_keywords_in_file(file, keywords, queue)
 
-# Основна функція для багатопроцесорного пошуку
+# Багатопроцесорний пошук
 def multiprocessing_search(files, keywords, num_processes):
     manager = multiprocessing.Manager()
     queue = manager.Queue()
@@ -46,7 +46,7 @@ def multiprocessing_search(files, keywords, num_processes):
     return results
 
 if __name__ == '__main__':
-    files = ['file1.txt', 'file2.txt', 'file3.txt', 'file4.txt']  # Список ваших файлів
+    files = ['file1.txt', 'file2.txt', 'file3.txt', 'file4.txt']
     keywords = []
 
     print("Введіть ключові слова. Введіть 'STOP' для завершення введення.")
@@ -56,7 +56,7 @@ if __name__ == '__main__':
             break
         keywords.append(keyword)
 
-    num_processes = 4  # Кількість процесів
+    num_processes = 4
 
     start_time = time.time()
     results = multiprocessing_search(files, keywords, num_processes)
